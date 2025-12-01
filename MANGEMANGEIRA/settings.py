@@ -118,6 +118,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'APP.Usuario'
 
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'email',
+}
+
+
 
 
 # Internationalization
