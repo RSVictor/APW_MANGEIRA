@@ -1,0 +1,644 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Mangeira
+meta:
+  id: wrk_ba7ed098076a45919ed9c044d38c876d
+  created: 1764430148312
+  modified: 1764430148312
+  description: ""
+collection:
+  - url: http://127.0.0.1:8000/api/registrar/
+    name: Registrar
+    meta:
+      id: req_9c1728838dbf46fa96182328109126be
+      created: 1764447240752
+      modified: 1764473121751
+      isPrivate: false
+      description: ""
+      sortKey: -1764447240752
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "email": "ribeiro@admin.com",
+          "password": "123456",
+          "nome": "Ribeiro",
+          "endereco": "Rua Teste 123",
+          "cpf": "12349975770",
+        	"cargo": "POS_VENDA"
+        	
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Cliente
+    meta:
+      id: fld_1a8753db0c5c41a5847c96a99444f68b
+      created: 1764437315486
+      modified: 1764437315486
+      sortKey: -1764437315486
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/produtos/
+        name: LISTAR PRODUTOS
+        meta:
+          id: req_c5c65f09fa474d98bfbad312c3af551c
+          created: 1764430156572
+          modified: 1764437342586
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325506.75
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/carrinho/add/
+        name: ADD CARRINHO
+        meta:
+          id: req_d12c5d882074474d8934b98f26ed54a4
+          created: 1764432526064
+          modified: 1764551566937
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325513
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "produto_id": 1,
+              "quantidade": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUxODQ3LCJpYXQiOjE3NjQ1NTE1NDcsImp0aSI6IjM2ZDJkOTk2N2Q4YjRjMzFhMmJiMmNmNzdjNTA4MjBiIiwidXNlcl9pZCI6ImpvYW9Ac2lsdmEuY29tIn0.TZlsXtqPN4DDMcZ8ZXolwCL7ZvkszxnISO3JetHZjN4
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/criar/
+        name: CRIAR PEDIDO
+        meta:
+          id: req_0066fec1159c46cd9f110bfd17c1612b
+          created: 1764432845487
+          modified: 1764556012942
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325538
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "itens": [7],
+              "metodo_pagamento": "BOLETO"	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUzMjc0LCJpYXQiOjE3NjQ1NTI5NzQsImp0aSI6IjhhMDk0MWUzMzM4MTRkZGRiY2EzMDAzY2M4ZGQ5MDg5IiwidXNlcl9pZCI6ImpvYW9Ac2lsdmEuY29tIn0.6z4T4raeX-YPtsopDQw5YBCGHUMJuz-aRuIN_lsUmMo
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/produto/avaliar/
+        name: AVALIAR
+        meta:
+          id: req_3894beda214141c6bc9ae7aa2f5b777e
+          created: 1764433481891
+          modified: 1764556213537
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325488
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "pedido_id": 13,
+              "produto_id": 1,
+              "nota": {% now 'iso-8601', '' %}
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUyNTgxLCJpYXQiOjE3NjQ1NTIyODEsImp0aSI6ImVmNTg2Y2MxNzU4YTRmMTU5MjYwYTgyYjczMGUwNjA3IiwidXNlcl9pZCI6ImpvYW9Ac2lsdmEuY29tIn0.RF63UmkiEa3HtDjGXH3wn6lIFXucFtHwSHvHVEAQUFY
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/status/
+        name: RECEBIDO/DEVOLUÇAO
+        meta:
+          id: req_f83c0a58d5e04b8baf3b3725ac849058
+          created: 1764437216332
+          modified: 1764552297121
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325588
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "pedido_id": 13,
+              "status": "SOLICITACAO_DEVOLUCAO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUyNTgxLCJpYXQiOjE3NjQ1NTIyODEsImp0aSI6ImVmNTg2Y2MxNzU4YTRmMTU5MjYwYTgyYjczMGUwNjA3IiwidXNlcl9pZCI6ImpvYW9Ac2lsdmEuY29tIn0.RF63UmkiEa3HtDjGXH3wn6lIFXucFtHwSHvHVEAQUFY
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/devolucao/
+        name: DEVOLUÇÂO
+        meta:
+          id: req_41567a2b5901499ebe27e9deab5b483c
+          created: 1764437569893
+          modified: 1764552116561
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325563
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+            	"pedido_id": 13,
+            	"item_id": 7,
+            	"motivo": "Acento rasgado"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUyMTk4LCJpYXQiOjE3NjQ1NTE4OTgsImp0aSI6IjI3YWI3YWRmZjEzZjQ2MGJiYjI4NTExODU4NDdjMjc2IiwidXNlcl9pZCI6ImpvYW9Ac2lsdmEuY29tIn0.h4I3nt1xDPqypljAsne9LjolsNxRD8bCie-4iq7MsUo
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/login/
+        name: LOGIN
+        meta:
+          id: req_61656e6341bd46689ca0794ebd8a3742
+          created: 1764547792153
+          modified: 1764549306838
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325491.125
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "joao@silva.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NDcwNDAxLCJpYXQiOjE3NjQ0NzAxMDEsImp0aSI6IjAyZDVkYWU5OGRkYTQwNmQ4NzhlYzU5NGY1YTA3NGY1IiwidXNlcl9pZCI6ImNhdWFAc2lsdmEuY29tIn0.zeCs6HWKoVjjCn4x1U_Kq1atFatWp4bHYYpVBXwDXMU
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/criar/
+        name: CRIAR PEDIDO/CARTAO
+        meta:
+          id: req_4fde60a539ac4fe0ab7cd0f7329004cc
+          created: 1764552420516
+          modified: 1764552861416
+          isPrivate: false
+          description: ""
+          sortKey: -1764437325525.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "itens": [1, 2],
+              "metodo_pagamento": "CARTAO",
+              "numero_cartao": "5555444433331111",
+              "nome_cartao": "JOAO DA SILVA",
+              "validade": "12/29",
+              "cvv": "300"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUzMTI3LCJpYXQiOjE3NjQ1NTI4MjcsImp0aSI6IjYzMTVjZWJhZTkzNDQ0ZTVhOWE5ODlmMTY4N2E5M2QxIiwidXNlcl9pZCI6ImpvYW9Ac2lsdmEuY29tIn0.JysHr5cxZ37aNiBenNdTieLz0vb23wUiiJyvSShgMZQ
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Financeiro
+    meta:
+      id: fld_3f88ad5ed8d843f6880932e50e9ebcff
+      created: 1764437365633
+      modified: 1764437365633
+      sortKey: -1764437365633
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/pedido/status/
+        name: APROVADO/REPROVADO
+        meta:
+          id: req_abdcb58b71fa4542812ac00c51c9a3d9
+          created: 1764433359328
+          modified: 1764551721584
+          isPrivate: false
+          description: ""
+          sortKey: -1764437377977
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            
+            {
+              "pedido_id": 13,
+              "status": "PAGAMENTO_APROVADO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUxOTg4LCJpYXQiOjE3NjQ1NTE2ODgsImp0aSI6ImU0NTE4MjE4ODkyYjRhMzhiZjM3Yjk2ZGYwZWE1ZGQ5IiwidXNlcl9pZCI6InBlZHJvQGJvcm8uY29tIn0.3xN8XhAf_AcQchwSP1aH9SFq604EjpsfAIs0Awm2-uQ
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/status/
+        name: NOTA FISCAL
+        meta:
+          id: req_c399406273c644f1a39356e9f8cea541
+          created: 1764437427532
+          modified: 1764551743977
+          isPrivate: false
+          description: ""
+          sortKey: -1764437378077
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "pedido_id": 13,
+              "status": "NOTA_FISCAL_EMITIDA"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUxOTg4LCJpYXQiOjE3NjQ1NTE2ODgsImp0aSI6ImU0NTE4MjE4ODkyYjRhMzhiZjM3Yjk2ZGYwZWE1ZGQ5IiwidXNlcl9pZCI6InBlZHJvQGJvcm8uY29tIn0.3xN8XhAf_AcQchwSP1aH9SFq604EjpsfAIs0Awm2-uQ
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/login/
+        name: LOGIN
+        meta:
+          id: req_ecc7fa2b385f42ac8bbd3b25fa21b474
+          created: 1764550022572
+          modified: 1764551683990
+          isPrivate: false
+          description: ""
+          sortKey: -1764437378002
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "pedro@boro.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUwMTU5LCJpYXQiOjE3NjQ1NDk4NTksImp0aSI6ImFkMzQwYjFmZmY3YzRjYjg4ZjE0MjM3MGU4YmY5YzRjIiwidXNlcl9pZCI6InBlZHJvQGJvcm8uY29tIn0.Dfp4xsmCkFyq5gfumcsgfZVoJLOw71X6oBnnRZdPCts
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Logistica
+    meta:
+      id: fld_732972d66d0c483ba082ef0dd91ea2d5
+      created: 1764437462903
+      modified: 1764437462903
+      sortKey: -1764437462903
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/pedido/status/
+        name: EM PREPARAÇAO
+        meta:
+          id: req_08e8b95686ec41f89c7f597998c5a206
+          created: 1764437468778
+          modified: 1764551864423
+          isPrivate: false
+          description: ""
+          sortKey: -1764437514389
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "pedido_id": 13,
+              "status": "EM_PREPARACAO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUyMTI0LCJpYXQiOjE3NjQ1NTE4MjQsImp0aSI6ImE4NjgwMzRmNDkyNTRjYTVhMjE4OTA2ZDJiYTExOTcxIiwidXNlcl9pZCI6Imx1Y2FzQHNpbHZhLmNvbSJ9.w8F2_HsoDXfxfkC7iH29KDW4W0y2MkapYMnPKRxpaX8
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/status/
+        name: ENVIADO
+        meta:
+          id: req_0ac7957f82094dd8ab38eaddd639ce2a
+          created: 1764437501483
+          modified: 1764551845672
+          isPrivate: false
+          description: ""
+          sortKey: -1764437514289
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "pedido_id": 13,
+              "status": "ENVIADO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUyMTI0LCJpYXQiOjE3NjQ1NTE4MjQsImp0aSI6ImE4NjgwMzRmNDkyNTRjYTVhMjE4OTA2ZDJiYTExOTcxIiwidXNlcl9pZCI6Imx1Y2FzQHNpbHZhLmNvbSJ9.w8F2_HsoDXfxfkC7iH29KDW4W0y2MkapYMnPKRxpaX8
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/login/
+        name: LOGIN
+        meta:
+          id: req_9fe9dc37962c45a5b5ae165b6785fc3f
+          created: 1764545473663
+          modified: 1764551820292
+          isPrivate: false
+          description: ""
+          sortKey: -1764437514339
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "lucas@silva.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUwMTU5LCJpYXQiOjE3NjQ1NDk4NTksImp0aSI6ImFkMzQwYjFmZmY3YzRjYjg4ZjE0MjM3MGU4YmY5YzRjIiwidXNlcl9pZCI6InBlZHJvQGJvcm8uY29tIn0.Dfp4xsmCkFyq5gfumcsgfZVoJLOw71X6oBnnRZdPCts
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Pós Venda
+    meta:
+      id: fld_1485753367f4407b86219d9bfc38a3d7
+      created: 1764437564940
+      modified: 1764437564940
+      sortKey: -1764437564940
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/login/
+        name: LOGIN
+        meta:
+          id: req_a9f6bffe9b8242ae806c0a9fd9f48d2c
+          created: 1764430230613
+          modified: 1764550194182
+          isPrivate: false
+          description: ""
+          sortKey: -1764544984301
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "caua@silva.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NDcwNDAxLCJpYXQiOjE3NjQ0NzAxMDEsImp0aSI6IjAyZDVkYWU5OGRkYTQwNmQ4NzhlYzU5NGY1YTA3NGY1IiwidXNlcl9pZCI6ImNhdWFAc2lsdmEuY29tIn0.zeCs6HWKoVjjCn4x1U_Kq1atFatWp4bHYYpVBXwDXMU
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/pedido/status/
+        name: STATUS PEDIDO
+        meta:
+          id: req_07eabac48b5043bbb064facb94f7e63c
+          created: 1764544984201
+          modified: 1764552191745
+          isPrivate: false
+          description: ""
+          sortKey: -1764544984201
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+            	"pedido_id": 13,
+            	"status": "DEVOLUCAO_CANCELADA"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTUyNDM0LCJpYXQiOjE3NjQ1NTIxMzQsImp0aSI6IjRjMGE0ODFlZmM4MTRhOGNhOWNlNGNiMmViZDNmZWI1IiwidXNlcl9pZCI6ImNhdWFAc2lsdmEuY29tIn0.qQ-Hy4DiNATetSmWDXTaY6VCN5-m8R9KKNBgVWpk_P4
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_0611d81093ad260936dd698662ab792e87ccbe09
+    created: 1764430148335
+    modified: 1764430148335
+environments:
+  name: Base Environment
+  meta:
+    id: env_0611d81093ad260936dd698662ab792e87ccbe09
+    created: 1764430148324
+    modified: 1764430148324
+    isPrivate: false
