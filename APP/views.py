@@ -153,7 +153,7 @@ class StatusPedidoView(generics.GenericAPIView):
             return Response({"erro": "Você não pode alterar para este status nessa etapa!"}, status=403)
 
 
-        # 🔒 Regras da Cadeia do Pedido (ordem obrigatória)
+        # Regras da Cadeia do Pedido (ordem obrigatória)
         regras_transicao = {
             "EM_PROCESSAMENTO": ["PAGAMENTO_APROVADO", "PAGAMENTO_REPROVADO"],
             "PAGAMENTO_APROVADO": ["NOTA_FISCAL_EMITIDA"],
